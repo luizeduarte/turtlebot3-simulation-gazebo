@@ -30,7 +30,7 @@ $ sudo apt install ros-humble-gazebo-*
 
 Create your workspace for turtlebot3 and clone the necessary files:
 ```
-$ mkdir -p ~/turtlebot3_ws/src2
+$ mkdir -p ~/turtlebot3_ws/src
 $ cd ~/turtlebot3_ws/src/
 $ git clone -b humble-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
 $ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
