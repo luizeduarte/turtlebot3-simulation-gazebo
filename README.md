@@ -4,11 +4,17 @@
 
   To begin, install ROS2 following the steps from the official [ROS2 documentation](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 ). The distribution Humble was chosen.
-    
+
    Other packages that could be useful in the future:
    ```
    $ sudo apt install ros-humble-cartographer
    $ sudo apt install ros-humble-cartographer-ros
+  ```
+
+### 2. Installing Nav2.
+  But first, what is Nav2? 
+  It is a package that provides navigation-related functionalities for robots. It's used for path planning, obstacle avoidance, and other navigation tasks in robotics. 
+  ```
    $ sudo apt install ros-humble-navigation2
    $ sudo apt install ros-humble-nav2-bringup
    ```
@@ -46,17 +52,20 @@ $ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 $ source /opt/ros/humble/setup.bash
 $ source ~/turtlebot3_ws/install/setup.bash
 $ export ROS_DOMAIN_ID=30 #TURTLEBOT3
+$ export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:/opt/ros/humble/share/turtlebot3_gazebo/models
 ```
 Adding the commands to the bashrc is possible, avoiding typing them again at each terminal.
 
-### 5. Running a turtlebot3 simulation in Gazebo!
+### 5. Running a turtlebot3 simulation in Gazebo using Nav2!
 ```
-$ ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+$ ros2 launch nav2_bringup tb3_simulation_launch.py headless:=False
 ```
+(It will launch your robot in the turtlebot3_world)
 
 ### 6. Navigating with the turtlebot.
+By default, Nav2 waits for you to give it an approximate starting position since the robot has no idea where it is. Next, click the “Navigaton2 Goal” button and choose a destination. This will call the BT navigator to go to that goal through an action server.
 
-To control the robot, open a new terminal and execute the following command:
+To control the robot with your keyboard, open a new terminal and execute the following command:
 ```
 $ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```
