@@ -87,7 +87,7 @@ No quarto terminal, iniciaremos o RViz, uma ferramenta de visualização 3D que 
 usuários visualizarem dados de sensores e informações do robô em tempo real. Para facilitar, <br>
 podemos começar com uma configuração do RViz já existente para o Nav2.
 ```
-$ ros2 run rviz2 rviz2 -d /opt/ros/humble/share/nav2_bringup/rviz/nav2_default_view.rviz
+ ros2 run rviz2 rviz2 -d /opt/ros/humble/share/nav2_bringup/rviz/nav2_default_view.rviz
 ```
 
 Anteriormente, você já utilizou o teclado para controlar a simulação do robô. Então, inicialize <br> 
