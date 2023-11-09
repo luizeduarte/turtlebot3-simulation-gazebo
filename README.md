@@ -35,7 +35,7 @@ observar a versão Burger do robô e suas features:<br>
 Sendo desenvolvido para o ROS2, o robô possui seus próprios pacotes, crie seu workspace para o <br>
 turtlebot3 e clone os arquivos referentes à ele:
 ```
-$ mkdir -p ~/turtlebot3_ws/src2
+$ mkdir -p ~/turtlebot3_ws/src
 $ cd ~/turtlebot3_ws/src/
 $ git clone -b humble-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
 $ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
@@ -45,6 +45,7 @@ $ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulation
 
 Compile:
 ```
+source /opt/ros/<distro>/setup.bash
 $ cd ~/turtlebot3_ws && colcon build --symlink-install
 $ source ~/turtlebot3_ws/install/setup.bash
 ```
@@ -58,7 +59,9 @@ source ~/turtlebot3_ws/install/setup.bash
 export ROS_DOMAIN_ID=30 #TURTLEBOT3
 
 ```
-Como você deve ter notado, para iniciar o conjunto de pacotes do Trobô, precisamos exportar<br>
+Não se esqueça que é possível adicionar os comandos para o arquivo bashrc, evitando ter que <br>
+digita-los novamente.
+Como você deve ter notado, para iniciar o conjunto de pacotes do robô, precisamos exportar<br>
 uma variável de ambiente para especificar qual versão queremos iniciar (burger, waffle, <br>
 waffle pi). Vamos usar a versão "burguer", equivalente à versão física que possuimos.
 
@@ -105,7 +108,8 @@ Agora, você deve ter dois novos arquivos:
 espaço livre, ocupado e desconhecido.
 
 Perfeito! Agora você poderá utilizar o mapa que criou para tarefas como navegação autônoma <br>
-e planejamento de trajetória.
+e planejamento de trajetória. Então, desafio-os à fazer o Turtlebot3 caminhar sozinho até um ponto <br>
+especificado por você no mapa do RViz!
 
 
 ### Possíveis problemas: 
