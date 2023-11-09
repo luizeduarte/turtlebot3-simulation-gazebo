@@ -1,7 +1,8 @@
 # Navegação SLAM
 
 > Não se esqueça de acessar o tutorial de ROS2 para facilitar esta 
-tarefa!
+tarefa!<br> Assumimos que você já possui o [sistema ROS2](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html) instalado <br>
+
 
 É essencial para os robôs autônomos que naveguem de forma eficaz em ambientes desconhecidos <br>
 ou dinâmicos. Para isso, surgiu o SLAM (Simultaneous Localization and Mapping), uma técnica <br>
@@ -13,8 +14,8 @@ planejamento de trajetória, a evasão de obstáculos e outras tarefas de navega
 -- e o pacote SLAM TollBox. Sendo assim, os utilizaremos para criar nosso próprio mapa. Então, <br>
  certifique-se de instalar:
 ```
- $ sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup
- $ sudo apt install ros-humble-slam-toolbox
+ sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup
+ sudo apt install ros-humble-slam-toolbox
 ```
 
 ### O simulador Gazebo
@@ -22,7 +23,7 @@ Uma das grandes vantagens do ROS2 é a possibilidade de simularmos robôs e ambi
 simples. Para isso, utilizaremos o simulador Gazebo, o qual possui uma ótima integração com o <br>
  sistema operacional. Para instalar o Gazebo, execute:
 ```
-$ sudo apt install ros-humble-gazebo-*
+ sudo apt install ros-humble-gazebo-*
 ```
 
 ### O Turtlebot3
@@ -35,19 +36,19 @@ observar a versão Burger do robô e suas features:<br>
 Sendo desenvolvido para o ROS2, o robô possui seus próprios pacotes, crie seu workspace para o <br>
 turtlebot3 e clone os arquivos referentes à ele:
 ```
-$ mkdir -p ~/turtlebot3_ws/src
-$ cd ~/turtlebot3_ws/src/
-$ git clone -b humble-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
-$ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
-$ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
-$ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
+ mkdir -p ~/turtlebot3_ws/src
+ cd ~/turtlebot3_ws/src/
+ git clone -b humble-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git
+ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3.git
+ git clone -b humble-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 ```
 
 Compile:
 ```
 source /opt/ros/<distro>/setup.bash
-$ cd ~/turtlebot3_ws && colcon build --symlink-install
-$ source ~/turtlebot3_ws/install/setup.bash
+cd ~/turtlebot3_ws && colcon build --symlink-install
+source ~/turtlebot3_ws/install/setup.bash
 ```
 
 Se lembra que devemos inicializar o ROS a cada terminal que abrimos? Agora, para configurar<br>
@@ -70,16 +71,16 @@ waffle pi). Vamos usar a versão "burguer", equivalente à versão física que p
 Vamos mapear nosso ambiente no Gazebo! Para isso, inicialize o ROS2 em um novo terminal e <br>
 inicialize o turtlebot3 em uma casa simulada no Gazebo. <br> 
 ```
-$ ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
+ ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
 ```
 
 Agora, em um novos terminais, inicialize o Nav2 e o SLAM Toolbox, a implementação de SLAM <br>
 escolhida, fornecida pela Nav2:
 ```
-$ ros2 launch nav2_bringup navigation_launch.py use_sim_time:=True
+ ros2 launch nav2_bringup navigation_launch.py use_sim_time:=True
 ```
 ```
-$ ros2 launch slam_toolbox online_async_launch.py use_sim_time:=True
+ ros2 launch slam_toolbox online_async_launch.py use_sim_time:=True
 ```
 
 No quarto terminal, iniciaremos o RViz, uma ferramenta de visualização 3D que permite os <br>
@@ -92,7 +93,7 @@ $ ros2 run rviz2 rviz2 -d /opt/ros/humble/share/nav2_bringup/rviz/nav2_default_v
 Anteriormente, você já utilizou o teclado para controlar a simulação do robô. Então, inicialize <br> 
 o ROS2 em um novo terminal e execute o pacote teleop:
 ```
-$ ros2 run turtlebot3_teleop teleop_keyboard
+ ros2 run turtlebot3_teleop teleop_keyboard
 ```
 
 Tudo pronto! Agora, através do LIDAR, o Turtlebot3 irá mapear o ambiente e localizar sua posição <br>
@@ -100,7 +101,7 @@ no mesmo.
 
 Quando estiver satisfeito com seu mapa, salve-o:
 ```
-$ ros2 run nav2_map_server map_saver_cli -f my_map
+ ros2 run nav2_map_server map_saver_cli -f my_map
 ```
 Agora, você deve ter dois novos arquivos:
 1. `my_map.yaml`: Contém os metadados do mapa e o caminho para o arquivo de imagem.
@@ -124,6 +125,6 @@ os passos, baixe:<br>
 
 3. Caso o Gazebo mostre alguma mensagem de erro tente rodar o seguinte comando antes de tentar <br>
 resolver de alguma outra forma: <br>
-    $ killall -9 gzserver<br>
+        $ killall -9 gzserver<br>
 Um problema conhecido dessa versão do gazebo é que às vezes o server side dele acaba não sendo <br>
 encerrado corretamente após uma execução.<br>
