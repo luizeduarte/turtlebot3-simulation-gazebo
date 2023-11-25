@@ -110,7 +110,17 @@ espaço livre, ocupado e desconhecido.
 
 Perfeito! Agora você poderá utilizar o mapa que criou para tarefas como navegação autônoma <br>
 e planejamento de trajetória. Então, desafio-os à fazer o Turtlebot3 caminhar sozinho até um ponto <br>
-especificado por você no mapa do RViz!
+especificado por você no mapa do RViz.
+
+### Avançando... 
+Foi desenvolvido um [ambiente do DINF](https://github.com/VRI-UFPR/jaguatirica-vri) para o Gazebo! <br>
+Adicione a pasta "2ndo_andar_passarela_escadas_v4" ao seus models em <br> 
+/turtlebot3_ws/src/turtlebot3_simulations/turtlebot3_gazebo, o arquivo "dinf_world.sdf" em worlds <br>
+e o arquivo disponível neste repositório do Github em "launch". Agora, para inicializar o ambiente, siga <br>
+os comandos citados anteriormente: 
+```
+ ros2 launch turtlebot3_gazebo turtlebot3_house.launch.py
+```
 
 
 ### Possíveis problemas: 
